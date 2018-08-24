@@ -12,3 +12,10 @@ Sean Johnson, Shane Afsar and Tao Ning is buiding this parser
 Open browser console, visit `http://127.0.0.1:8080/`, the console should logout validation errors:
 
 ![validation errors screenshot](/image/validation-errors.png)
+
+## TODOS
+
+- [] Implement a master function to: 1, call each validator 2, catch error in parser 3, aggregate errors and output
+- [] Implement file picker in UI, bind master validator function to onchange event, display error in UI
+- [] Add precommit hook (eslint, prettier)
+- [] Add tests

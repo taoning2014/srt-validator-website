@@ -19,21 +19,14 @@ export default class LineNumberValidator extends BaseValidator {
 
     // need to increment by 1
     // todo: refactor to reduce
-    let curSequenceNum = 1;
     this.parsedJSON.map((obj, index) => {
-      if (index === 0) {
-        return;
-      }
-
       const { sequenceNumber } = obj;
-      if (sequenceNumber !== curSequenceNum + 1) {
+      if (sequenceNumber !== index + 1) {
         this._addToResult({
           message: 'number of sequence need to increment by 1',
           lineNumber: index * 4 + 1, // FIX: text may larger than 1 line
         });
       }
-
-      curSequenceNum += 1;
     });
 
     return this.result;
