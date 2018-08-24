@@ -7,7 +7,7 @@ export default class LineNumberValidator extends BaseValidator {
   }
 
   validate(...args) {
-    super(...args);
+    super.validate(...args);
 
     // need to start with 1
     if (this.parsedJSON[0] !== 1) {
