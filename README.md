@@ -15,7 +15,9 @@ Open browser console, visit `http://127.0.0.1:8080/`, the console should logout 
 
 ## TODOS
 
-- [] Implement a master function to: 1, call each validator 2, catch error in parser 3, aggregate errors and output
-- [] Implement file picker in UI, bind master validator function to onchange event, display error in UI
-- [] Add precommit hook (eslint, prettier)
-- [] Add tests
+- [X] Implement a master function to: 1, call each validator 2, catch error in parser 3, aggregate errors and output
+- [ ] Implement file picker in UI, bind master validator function to onchange event, display error in UI
+- [ ] Implement text editor in UI, which will parse the input file and display it in the editor. User can use it to change the caption content and valide it.
+- [ ] Add precommit hook (eslint, prettier)
+- [ ] Add tests
+- [ ] Add hot reload

@@ -1,6 +1,13 @@
-import SRTParser from './parser';
-import LineNumberValidator from './validators/lineNumberValidator';
-import CaptionTimeSpanValidator from './validators/captionTimeSpanValidator';
+import srtValidator from './srtValidator';
+
+window.onload = () => {
+  const fileInput = document.getElementById('caption-file');
+  fileInput.addEventListener('change', event => {
+    // TODO add srtValidator here
+    console.log('i am changed');
+    console.log(event);
+  });
+};
 
 const srtString = `0
 00:00:00,970 --> 00:00:03,000
@@ -26,15 +33,4 @@ Pro Tip: Turn off the camera flash!
 00:00:0,000 --> 00:00:41,000
 Thanks for watching and I hope you'll have fun with the VideoSub library!`;
 
-const srtParser = new SRTParser(srtString);
-console.log('====parser result====');
-const parsedObj = srtParser.parse();
-console.log(JSON.stringify(parsedObj));
-
-console.log('====lineNumberValidator result====');
-const lineNumberValidator = new LineNumberValidator(parsedObj);
-console.log(lineNumberValidator.validate());
-
-console.log('====captionTimeSpanValidator result====');
-const captionTimeSpanValidator = new CaptionTimeSpanValidator(parsedObj);
-console.log(captionTimeSpanValidator.validate());
+console.log(srtValidator(srtString));

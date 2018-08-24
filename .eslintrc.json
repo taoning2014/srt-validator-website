@@ -7,7 +7,7 @@
     "no-unused-vars": "warn",
     "no-useless-escape": "warn",
     "func-names": "off",
-    "no-underscore-dangle": "warn",
+    "no-underscore-dangle": "off",
     "class-methods-use-this": "warn",
     "array-callback-return": "warn",
     "consistent-return": "warn"
