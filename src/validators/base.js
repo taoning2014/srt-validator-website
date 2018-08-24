@@ -5,7 +5,11 @@ export default class BaseValidator {
   }
 
   // Need to be Override
-  validate() {}
+  validate() {
+    if (!this.parsedJSON.length) {
+      return this.result;
+    }
+  }
 
   // Push to result
   _addToResult({ message = '', lineNumber }) {

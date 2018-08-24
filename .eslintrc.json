@@ -9,6 +9,7 @@
     "func-names": "off",
     "no-underscore-dangle": "warn",
     "class-methods-use-this": "warn",
-    "array-callback-return": "warn"
+    "array-callback-return": "warn",
+    "consistent-return": "warn"
   }
 }
