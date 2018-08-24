@@ -1,6 +1,6 @@
 import SRTParser from './parser';
-import LineNumberValidator from './validators/captionTimeSpanValidator';
-import CaptionTimeSpanValidator from './validators/lineNumberValidator';
+import LineNumberValidator from './validators/lineNumberValidator';
+import CaptionTimeSpanValidator from './validators/captionTimeSpanValidator';
 
 const srtString = `0
 00:00:00,970 --> 00:00:03,000
