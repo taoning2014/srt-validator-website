@@ -12,26 +12,26 @@ export default class SRTParser {
   }
 
   _parseChunk(chunk) {
-    const [lineNumber, timeSpan, text] = chunk.split(this.EOL);
+    const [sequenceNumber, timeSpan, text] = chunk.split(this.EOL);
     if (!text) {
       throw new Error(`Missing subtitle text: ${chunk}`);
     }
     return {
-      lineNumber: this._parseLineNumber(lineNumber),
       text,
+      sequenceNumber: this._parseSequenceNumber(sequenceNumber),
       time: this._parseTimeSpan(timeSpan),
     };
   }
 
-  _parseLineNumber(lineNumber) {
-    if (!lineNumber) {
+  _parseSequenceNumber(sequenceNumber) {
+    if (!sequenceNumber) {
       throw new Error(`Missing Line Number: ${chunk}`);
     }
-    const _lineNumber = Number(lineNumber);
-    if (!Number.isInteger(_lineNumber)) {
+    const _sequenceNumber = Number(sequenceNumber);
+    if (!Number.isInteger(_sequenceNumber)) {
       throw new Error(`Expected Integer for line number: ${chunk}`);
     }
-    return _lineNumber;
+    return _sequenceNumber;
   }
 
   _parseTimeSpan(timeSpan) {
