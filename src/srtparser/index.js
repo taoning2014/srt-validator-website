@@ -1,5 +1,5 @@
-import parser from './parser';
+import parse from './parser';
 
-export function parseSRT(fileContents) {
-  return new parser(fileContents).parse();
+export default {
+  parse
 };
