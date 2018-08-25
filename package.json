@@ -7,16 +7,11 @@
     "test": "./node_modules/karma/bin/karma start",
     "test:watch": "./node_modules/karma/bin/karma start --no-single-run",
     "clean": "rm -rf dist",
-    "build": "npm rum clean && broccoli build dist && node_modules/webpack/bin/webpack.js",
+    "build": "npm rum clean && node_modules/webpack/bin/webpack.js",
     "serve": "npm run build && ./node_modules/http-server/bin/http-server dist"
   },
   "devDependencies": {
     "babel-preset-env": "^1.7.0",
-    "broccoli": "^1.1.4",
-    "broccoli-babel-transpiler": "^6.5.0",
-    "broccoli-funnel": "^2.0.1",
-    "broccoli-merge-trees": "^3.0.1",
-    "broccoli-webpack-cached": "^0.3.1-beta4",
     "eslint": "^4.9.0",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-config-prettier": "^2.6.0",
