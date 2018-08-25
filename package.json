@@ -4,10 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "./node_modules/karma/bin/karma start",
+    "test:watch": "./node_modules/karma/bin/karma start --no-single-run",
     "clean": "rm -rf dist",
-    "build": "npm rum clean && broccoli build dist && webpack",
-    "serve": "npm run build && http-server dist"
+    "build": "npm rum clean && broccoli build dist && node_modules/webpack/bin/webpack.js",
+    "serve": "npm run build && ./node_modules/http-server/bin/http-server dist"
   },
   "devDependencies": {
     "babel-preset-env": "^1.7.0",
@@ -22,8 +23,13 @@
     "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-prettier": "^2.3.1",
     "http-server": "^0.11.1",
+    "karma": "^3.0.0",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-qunit": "^2.1.0",
+    "karma-webpack": "^3.0.0",
     "pre-commit": "^1.2.2",
     "prettier": "^1.8.2",
+    "qunit": "^2.6.2",
     "webpack": "^4.17.1",
     "webpack-cli": "^3.1.0"
   },

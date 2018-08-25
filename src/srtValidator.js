@@ -1,5 +1,5 @@
 // import parser
-import SRTParser from './parser';
+import { parseSRT } from './srtparser';
 
 // import validators
 import LineNumberValidator from './validators/lineNumberValidator';
@@ -44,8 +44,7 @@ export default function srtValidator() {
   let parsedObj;
 
   try {
-    const srtParser = new SRTParser(srtString);
-    parsedObj = srtParser.parse();
+    const parsedObj = parseSRT(srtString);
   } catch (error) {
     result.push(error);
   }

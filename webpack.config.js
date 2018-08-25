@@ -6,4 +6,9 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     filename: 'main.bundle.js',
   },
+  resolve: {
+    alias: {
+      'srt-validator': path.resolve(__dirname, 'src')
+    }
+  }
 };

@@ -9,6 +9,11 @@ Sean Johnson, Shane Afsar and Tao Ning is buiding this parser
 3. `npm install`
 4. `npm run serve`
 
+## Running tests
+Tests are automatically run on precommit, but you can also run them manually:
+1. `npm test`
+2. `npm run test:watch` - watches files for changes
+
 Open browser console, visit `http://127.0.0.1:8080/`, the console should logout validation errors:
 
 ![validation errors screenshot](/image/validation-errors.png)
