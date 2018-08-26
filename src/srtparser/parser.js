@@ -24,13 +24,16 @@ export default function parse(file) {
     }
 
     if (separator && separator.trim()) {
-      throw new ParseError(`Expected empty line (separator), but found "${separator}"`, i + 3);
+      throw new ParseError(
+        `Expected empty line (separator), but found "${separator}"`,
+        i + 3
+      );
     }
 
     result.push({
       sequenceNumber,
       time,
-      text
+      text,
     });
   }
 
@@ -49,7 +52,10 @@ function _parseSequenceNumber(sequenceNumber, lineNumber) {
   }
   const _sequenceNumber = Number(sequenceNumber);
   if (!Number.isInteger(_sequenceNumber)) {
-    throw new ParseError(`Expected Integer for sequence number: ${sequenceNumber}`, lineNumber);
+    throw new ParseError(
+      `Expected Integer for sequence number: ${sequenceNumber}`,
+      lineNumber
+    );
   }
   return _sequenceNumber;
 }

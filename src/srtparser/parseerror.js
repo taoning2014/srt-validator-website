@@ -1,5 +1,5 @@
 export default class ParseError extends Error {
-  constructor (message, lineNumber) {
+  constructor(message, lineNumber) {
     super(message);
     this.lineNumber = lineNumber + 1;
   }

@@ -4,12 +4,17 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/karma/bin/karma start",
-    "test:watch": "./node_modules/karma/bin/karma start --no-single-run",
+    "test": "./node_modules/.bin/karma start",
+    "test:watch": "./node_modules/.bin/karma start --no-single-run",
     "clean": "rm -rf dist",
-    "build": "npm rum clean && node_modules/webpack/bin/webpack.js",
-    "serve": "npm run build && ./node_modules/http-server/bin/http-server dist"
+    "build": "npm rum clean && ./node_modules/.bin/webpack",
+    "serve": "npm run build && ./node_modules/.bin/http-server dist",
+    "prettier": "./node_modules/.bin/prettier --single-quote --trailing-comma es5 --write \"{src,tests}/**/*.js\""
   },
+  "precommit": [
+    "prettier",
+    "test"
+  ],
   "devDependencies": {
     "babel-preset-env": "^1.7.0",
     "eslint": "^4.9.0",
