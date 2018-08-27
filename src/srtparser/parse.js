@@ -1,4 +1,5 @@
 import ParseError from './parseerror';
+import { toMS } from './date';
 
 const EOL = /\r?\n/;
 const TIME_STAMP_REGEX = /(\d+):(\d{1,2}):(\d{1,2}),(\d{1,3})/;
@@ -14,8 +15,8 @@ export default function parse(file) {
   const result = [];
 
   for (var i = 0; i < lines.length; i += 4) {
-    const sequenceNumber = _parseSequenceNumber(lines[i], i);
-    const time = _parseTimeSpan(lines[i + 1], i + 1);
+    const sequenceNumber = parseSequenceNumber(lines[i], i);
+    const time = parseTimeSpan(lines[i + 1], i + 1);
     const text = lines[i + 2];
     const separator = lines[i + 3];
 
@@ -46,7 +47,7 @@ export default function parse(file) {
  * @param  {Number} lineNumber - The line number currently being parsed
  * @return {Number}
  */
-function _parseSequenceNumber(sequenceNumber, lineNumber) {
+function parseSequenceNumber(sequenceNumber, lineNumber) {
   if (!sequenceNumber) {
     throw new ParseError(`Missing sequence number`, lineNumber);
   }
@@ -72,7 +73,7 @@ function _parseSequenceNumber(sequenceNumber, lineNumber) {
  * @param  {Number} lineNumber - The line number currently being parsed
  * @return {Object}
  */
-function _parseTimeSpan(timeSpan, lineNumber) {
+function parseTimeSpan(timeSpan, lineNumber) {
   if (!timeSpan) {
     throw new ParseError(`Missing time span: ${timeSpan}`, lineNumber);
   }
@@ -81,8 +82,8 @@ function _parseTimeSpan(timeSpan, lineNumber) {
     throw new ParseError(`Invalid time span: ${timeSpan}`, lineNumber);
   }
   return {
-    start: _parseTimeStamp(start, lineNumber),
-    end: _parseTimeStamp(end, lineNumber),
+    start: parseTimeStamp(start, lineNumber),
+    end: parseTimeStamp(end, lineNumber),
   };
 }
 
@@ -97,11 +98,13 @@ function _parseTimeSpan(timeSpan, lineNumber) {
  * @param  {Number} lineNumber - The line number currently being parsed
  * @return {Number}
  */
-function _parseTimeStamp(timeStamp, lineNumber) {
+export function parseTimeStamp(timeStamp, lineNumber) {
   const match = TIME_STAMP_REGEX.exec(timeStamp);
   if (!match) {
     throw new ParseError(`Invalid time stamp: ${timeStamp}`, lineNumber);
   }
   const [hours, minutes, seconds, millis] = match.slice(1).map(Number);
-  return hours * 36e5 + minutes * 6e4 + seconds * 1e3 + millis;
+  return (
+    hours * toMS.hour + minutes * toMS.minute + seconds * toMS.second + millis
+  );
 }

@@ -1,5 +1,7 @@
 import SRTParser from 'srt-validator/srtparser';
 import ParseError from 'srt-validator/srtparser/parseerror';
+import { toMS } from 'srt-validator/srtparser/date';
+import { parseTimeStamp } from 'srt-validator/srtparser/parse';
 
 const { test } = QUnit;
 
@@ -132,4 +134,38 @@ hello
       ),
     new ParseError('Missing sequence number', 4)
   );
+});
+
+test('parseTimeStamp: successful conversions', function(assert) {
+  const data = [
+    // Correctly padded
+    { str: '00:00:00,000', expected: 0 },
+    { str: '01:00:00,000', expected: toMS.hour },
+    { str: '00:01:00,000', expected: toMS.minute },
+    { str: '00:00:01,000', expected: toMS.second },
+
+    // Overflow
+    { str: '00:60:00,000', expected: toMS.hour },
+    { str: '00:00:60,000', expected: toMS.minute },
+
+    // Unpadded
+    { str: '0:0:0,0', expected: 0 },
+    { str: '1:0:0,0', expected: toMS.hour },
+    { str: '0:1:0,0', expected: toMS.minute },
+    { str: '0:0:1,0', expected: toMS.second },
+  ].forEach(data => {
+    assert.equal(parseTimeStamp(data.str), data.expected);
+  });
+});
+
+test('parseTimeStamp: unparseable', function(assert) {
+  const data = [
+    // Missing fields
+    ':00:00,000',
+    '00::00,000',
+    '00:00:,000',
+    '00:00:00,',
+  ].forEach(data => {
+    assert.throws(() => parseTimeStamp(data.str));
+  });
 });
