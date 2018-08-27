@@ -4,26 +4,32 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "./node_modules/.bin/karma start",
+    "test:watch": "./node_modules/.bin/karma start --no-single-run",
     "clean": "rm -rf dist",
-    "build": "npm rum clean && broccoli build dist && webpack",
-    "serve": "npm run build && http-server dist"
+    "build": "npm run clean && ./node_modules/.bin/webpack",
+    "serve": "npm run build && ./node_modules/.bin/http-server dist",
+    "prettier": "./node_modules/.bin/prettier --single-quote --trailing-comma es5 --write \"{src,tests}/**/*.js\""
   },
+  "precommit": [
+    "prettier",
+    "test"
+  ],
   "devDependencies": {
     "babel-preset-env": "^1.7.0",
-    "broccoli": "^1.1.4",
-    "broccoli-babel-transpiler": "^6.5.0",
-    "broccoli-funnel": "^2.0.1",
-    "broccoli-merge-trees": "^3.0.1",
-    "broccoli-webpack-cached": "^0.3.1-beta4",
     "eslint": "^4.9.0",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-config-prettier": "^2.6.0",
     "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-prettier": "^2.3.1",
     "http-server": "^0.11.1",
+    "karma": "^3.0.0",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-qunit": "^2.1.0",
+    "karma-webpack": "^3.0.0",
     "pre-commit": "^1.2.2",
     "prettier": "^1.8.2",
+    "qunit": "^2.6.2",
     "webpack": "^4.17.1",
     "webpack-cli": "^3.1.0"
   },
