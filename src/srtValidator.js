@@ -44,7 +44,7 @@ export default function srtValidator() {
   let parsedObj;
 
   try {
-    const parsedObj = SRTParser.parse(srtString);
+    parsedObj = SRTParser.parse(srtString);
   } catch (error) {
     result.push(error);
   }

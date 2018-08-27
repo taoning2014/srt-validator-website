@@ -7,7 +7,7 @@
     "test": "./node_modules/.bin/karma start",
     "test:watch": "./node_modules/.bin/karma start --no-single-run",
     "clean": "rm -rf dist",
-    "build": "npm run clean && ./node_modules/.bin/webpack",
+    "build": "npm run clean && ./node_modules/.bin/broccoli build dist && ./node_modules/.bin/webpack",
     "serve": "npm run build && ./node_modules/.bin/http-server dist",
     "prettier": "./node_modules/.bin/prettier --single-quote --trailing-comma es5 --write \"{src,tests}/**/*.js\""
   },
@@ -17,6 +17,10 @@
   ],
   "devDependencies": {
     "babel-preset-env": "^1.7.0",
+    "broccoli": "^1.1.4",
+    "broccoli-cli": "^1.0.0",
+    "broccoli-funnel": "^2.0.1",
+    "broccoli-merge-trees": "^3.0.1",
     "eslint": "^4.9.0",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-config-prettier": "^2.6.0",

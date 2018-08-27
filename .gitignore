@@ -18,7 +18,6 @@ config/
 littleproxy*
 log.txt
 logs/
-lib/
 project/project
 /target
 */target

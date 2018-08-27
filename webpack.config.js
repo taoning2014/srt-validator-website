@@ -8,7 +8,7 @@ module.exports = {
   },
   resolve: {
     alias: {
-      'srt-validator': path.resolve(__dirname, 'src')
-    }
-  }
+      'srt-validator': path.resolve(__dirname, 'src'),
+    },
+  },
 };
