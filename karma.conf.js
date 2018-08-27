@@ -6,14 +6,17 @@ module.exports = function(config) {
     plugins: ['karma-qunit', 'karma-chrome-launcher', 'karma-webpack'],
     browsers: ['Chrome'],
     files: [
+      // Test context
       'tests/tests.webpack.js',
+
+      // Watch all JS files, but don't include them in the build
+      // (they're already required through tests.webpack.js)
       {
-        pattern: 'tests/**/*.spec.js',
+        pattern: '{tests,src}/**/*.spec.js',
         included: false,
         served: false,
         watched: true
       },
-      { pattern: 'src/**/*.js', type: 'module' },
     ],
 
     preprocessors: {

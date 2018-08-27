@@ -76,7 +76,7 @@ function _parseTimeSpan(timeSpan, lineNumber) {
   if (!timeSpan) {
     throw new ParseError(`Missing time span: ${timeSpan}`, lineNumber);
   }
-  const [start, end] = timeSpan.split(' --> '); // ---> or -> aslo need a space between `-->`
+  const [start, end] = timeSpan.split(' --> ');
   if (!start || !end) {
     throw new ParseError(`Invalid time span: ${timeSpan}`, lineNumber);
   }
