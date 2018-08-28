@@ -44,4 +44,5 @@ Currently the app is deployed to [github pages](https://pages.github.com/), foll
 - [ ] Add style to make UI looks better.
 - [ ] Add more logic to UI e.g. disable button before user upload or type in the textarea.
 - [ ] Refactor pretter to only check changed files, add eslint to pre-commit.
+- [ ] User should be able to download the valid caption file by SRTParser.serialize.
 - [ ] MOST IMPORT :fire::fire::fire: play with UI, capture missing validation error(don't go too wild, just the regular errors, please~~), update parser / validators to capture those errors.
