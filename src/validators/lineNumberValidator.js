@@ -10,7 +10,7 @@ export default class LineNumberValidator extends BaseValidator {
     super.validate(...args);
 
     // need to start with 1
-    if (this.parsedJSON[0] !== 1) {
+    if (this.parsedJSON[0].sequenceNumber !== 1) {
       this._addToResult({
         message: 'number of sequence need to start with 1',
         lineNumber: 1,
