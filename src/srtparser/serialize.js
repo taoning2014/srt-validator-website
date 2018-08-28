@@ -8,9 +8,11 @@ const CHUNK_SEPARATOR = '\n\n';
  */
 export default function serialize(srtChunks) {
   return srtChunks
-    .map(chunk => `${chunk.sequenceNumber}
+    .map(
+      chunk => `${chunk.sequenceNumber}
 ${serializeTimeSpan(chunk.time)}
-${chunk.text}`)
+${chunk.text}`
+    )
     .join(CHUNK_SEPARATOR);
 }
 
@@ -22,7 +24,9 @@ ${chunk.text}`)
  * @return {[type]}          [description]
  */
 function serializeTimeSpan(timeSpan) {
-  return `${serializeTimeStamp(timeSpan.start)} --> ${serializeTimeStamp(timeSpan.end)}`;
+  return `${serializeTimeStamp(timeSpan.start)} --> ${serializeTimeStamp(
+    timeSpan.end
+  )}`;
 }
 
 /**

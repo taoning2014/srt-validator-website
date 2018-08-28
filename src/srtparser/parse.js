@@ -14,21 +14,26 @@ export default function parse(file) {
 
   const result = [];
 
-  for (var i = 0; i < lines.length; i += 4) {
+  for (var i = 0; i < lines.length; i++) {
+    // First line
     const sequenceNumber = parseSequenceNumber(lines[i], i);
-    const time = parseTimeSpan(lines[i + 1], i + 1);
-    const text = lines[i + 2];
-    const separator = lines[i + 3];
 
-    if (!text) {
-      throw new ParseError(`Missing caption text`, i + 2);
+    // Second line
+    i++;
+    const time = parseTimeSpan(lines[i], i);
+
+    // Text can span multiple lines, so consume all lines
+    // until the separator
+
+    i++;
+    const _linesOfText = [];
+    while (lines[i] && lines[i].trim()) {
+      _linesOfText.push(lines[i]);
+      i++;
     }
-
-    if (separator && separator.trim()) {
-      throw new ParseError(
-        `Expected empty line (separator), but found "${separator}"`,
-        i + 3
-      );
+    const text = _linesOfText.join('\n');
+    if (!text) {
+      throw new ParseError(`Missing caption text`, i);
     }
 
     result.push({
