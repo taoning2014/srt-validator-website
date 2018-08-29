@@ -13,6 +13,8 @@ Sean Johnson, Shane Afsar and Tao Ning is buiding this parser
 
 Open browser console, visit `http://127.0.0.1:8080/`, the console should log validation errors:
 
+![UI](/image/UI.png)
+
 ![validation errors screenshot](/image/validation-errors.png)
 
 ## Running tests
@@ -38,11 +40,13 @@ Currently the app is deployed to [github pages](https://pages.github.com/), foll
 - [X] Add precommit hook (eslint, prettier).
 - [X] Implement file picker in UI, bind master validator function to onchange event, display error in UI.
 - [X] Implement text editor in UI, which will parse the input file and display it in the editor. User can use it to change the caption content and valide it.
+- [X] Add style to make UI looks better.
 - [ ] Add hot reload.
 - [ ] Add missing tests.
 - [ ] Refactor UI.
-- [ ] Add style to make UI looks better.
 - [ ] Add more logic to UI e.g. disable button before user upload or type in the textarea.
 - [ ] Refactor pretter to only check changed files, add eslint to pre-commit.
 - [ ] User should be able to download the valid caption file by SRTParser.serialize.
+- [ ] Add deploy stript
+- [ ] Add line numbers to the textarea
 - [ ] MOST IMPORT :fire::fire::fire: play with UI, capture missing validation error(don't go too wild, just the regular errors, please~~), update parser / validators to capture those errors.
