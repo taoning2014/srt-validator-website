@@ -49,4 +49,5 @@ Currently the app is deployed to [github pages](https://pages.github.com/), foll
 - [ ] User should be able to download the valid caption file by SRTParser.serialize.
 - [ ] Add deploy stript
 - [ ] Add line numbers to the textarea
+- [ ] Improve page loading time for the new HTML5UP template
 - [ ] MOST IMPORT :fire::fire::fire: play with UI, capture missing validation error(don't go too wild, just the regular errors, please~~), update parser / validators to capture those errors.
