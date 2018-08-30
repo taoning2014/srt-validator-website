@@ -9,6 +9,16 @@ module.exports = {
   resolve: {
     alias: {
       'srt-validator': path.resolve(__dirname, 'src'),
+      'codemirror': path.resolve(__dirname, 'node_modules/codemirror/')
     },
   },
+
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: [ 'style-loader/url', 'file-loader' ]
+      }
+    ]
+  }
 };

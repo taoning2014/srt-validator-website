@@ -34,20 +34,23 @@ Currently the app is deployed to [github pages](https://pages.github.com/), foll
 6. Push to github: `git push --set-upstream origin gh-pages --force`.
 
 ## TODOS
+- [ ] Add hot reload.
+- [ ] Add missing tests.
+- [ ] Refactor UI.
+- [ ] Add more logic to UI e.g. disable button before user upload or type in the textarea.
+- [ ] Refactor prettier to only check changed files, add eslint to pre-commit.
+- [ ] User should be able to download the valid caption file by SRTParser.serialize.
+- [ ] Add deploy stript
+- [ ] Improve page loading time for the new HTML5UP template
+- [ ] MOST IMPORT :fire::fire::fire: play with UI, capture missing validation error (don't go too wild, just the regular errors, please)
 
+## DONE
 - [X] Implement a master function to: 1, call each validator 2, catch error in parser 3, aggregate errors and output.
 - [X] Add tests.
 - [X] Add precommit hook (eslint, prettier).
 - [X] Implement file picker in UI, bind master validator function to onchange event, display error in UI.
 - [X] Implement text editor in UI, which will parse the input file and display it in the editor. User can use it to change the caption content and valide it.
 - [X] Add style to make UI looks better.
-- [ ] Add hot reload.
-- [ ] Add missing tests.
-- [ ] Refactor UI.
-- [ ] Add more logic to UI e.g. disable button before user upload or type in the textarea.
-- [ ] Refactor pretter to only check changed files, add eslint to pre-commit.
-- [ ] User should be able to download the valid caption file by SRTParser.serialize.
-- [ ] Add deploy stript
-- [ ] Add line numbers to the textarea
-- [ ] Improve page loading time for the new HTML5UP template
-- [ ] MOST IMPORT :fire::fire::fire: play with UI, capture missing validation error(don't go too wild, just the regular errors, please~~), update parser / validators to capture those errors.
+- [X] Add line numbers to the textarea
+
+update parser / validators to capture those errors.

@@ -1,5 +1,7 @@
 import srtValidator from './srtValidator';
 import { cleanInfo, displayInfo, displayError } from './utils/info';
+import CodeMirror from 'codemirror/lib/codemirror';
+import CodeMirrorCSS from 'codemirror/lib/codemirror.css';
 
 window.onload = () => {
   const captionFile = document.getElementById('caption-file');
@@ -7,8 +9,11 @@ window.onload = () => {
   const captionValidatorBtn = document.getElementById('caption-validator');
   const infoContainer = document.getElementById('info');
 
+  const editor = CodeMirror.fromTextArea(captionEditor, {
+    lineNumbers: true
+  });
   function updateEditor({ target: { result } } = {}) {
-    captionEditor.value = result;
+    editor.getDoc().setValue(result);
   }
 
   function updateResult(result) {
