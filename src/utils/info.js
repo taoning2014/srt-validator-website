@@ -19,14 +19,21 @@ export function displayError(el, error) {
 
   let errorText;
   if (error instanceof ParseError) {
-    errorText = `Parse Error: ${message} on line ${lineNumber}`;
+    errorText = `Parse Error: ${message} on `;
   } else {
-    errorText = `${validator}: ${message} on line ${lineNumber}`;
+    errorText = `${validator}: ${message} on `;
   }
 
+  const lineLink = document.createElement('a');
+  lineLink.innerHTML = `line ${lineNumber}`;
+  lineLink.href = 'javascript:void(0)';
+  lineLink.dataset.lineNumber = lineNumber;
+
   const li = document.createElement('li');
+  li.dataset.lineNumber = lineNumber;
   const textNode = document.createTextNode(errorText);
   li.appendChild(textNode);
+  li.appendChild(lineLink);
   li.classList.add('caption-validator__info', 'caption-validator__info--error');
   el.appendChild(li);
 }

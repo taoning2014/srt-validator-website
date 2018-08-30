@@ -7,9 +7,19 @@ window.onload = () => {
   const captionFile = document.getElementById('caption-file');
   const captionValidatorBtn = document.getElementById('caption-validator');
   const infoContainer = document.getElementById('info');
-  const captionEditor = CodeMirror.fromTextArea(document.getElementById('caption-editor'), {
-    lineNumbers: true,
-  });
+  const captionEditor = CodeMirror.fromTextArea(
+    document.getElementById('caption-editor'),
+    {
+      lineNumbers: true,
+    }
+  );
+
+  infoContainer.onclick = function(event) {
+    const line = Number(event.target.dataset.lineNumber);
+    if (line) {
+      captionEditor.scrollIntoView({ line });
+    }
+  };
 
   function updateEditor({ target: { result } } = {}) {
     captionEditor.getDoc().setValue(result);
