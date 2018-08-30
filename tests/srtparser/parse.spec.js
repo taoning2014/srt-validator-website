@@ -85,6 +85,12 @@ test('parseTimeStamp: successful conversions', function(assert) {
     { str: '00:01:00,000', expected: toMS.minute },
     { str: '00:00:01,000', expected: toMS.second },
 
+    // Decimal separated instead of comma (some US editors do this)
+    { str: '00:00:00.000', expected: 0 },
+    { str: '01:00:00.000', expected: toMS.hour },
+    { str: '00:01:00.000', expected: toMS.minute },
+    { str: '00:00:01.000', expected: toMS.second },
+
     // Overflow
     { str: '00:60:00,000', expected: toMS.hour },
     { str: '00:00:60,000', expected: toMS.minute },
