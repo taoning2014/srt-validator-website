@@ -5,15 +5,14 @@ import CodeMirrorCSS from 'codemirror/lib/codemirror.css';
 
 window.onload = () => {
   const captionFile = document.getElementById('caption-file');
-  const captionEditor = document.getElementById('caption-editor');
   const captionValidatorBtn = document.getElementById('caption-validator');
   const infoContainer = document.getElementById('info');
-
-  const editor = CodeMirror.fromTextArea(captionEditor, {
-    lineNumbers: true
+  const captionEditor = CodeMirror.fromTextArea(document.getElementById('caption-editor'), {
+    lineNumbers: true,
   });
+
   function updateEditor({ target: { result } } = {}) {
-    editor.getDoc().setValue(result);
+    captionEditor.getDoc().setValue(result);
   }
 
   function updateResult(result) {
@@ -40,7 +39,7 @@ window.onload = () => {
   });
 
   captionValidatorBtn.addEventListener('click', () => {
-    const srtString = captionEditor.value;
+    const srtString = captionEditor.getDoc().getValue();
     updateResult(srtValidator(srtString));
   });
 };
