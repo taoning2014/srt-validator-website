@@ -6,9 +6,9 @@
   "scripts": {
     "test": "./node_modules/.bin/karma start",
     "test:watch": "./node_modules/.bin/karma start --no-single-run",
-    "clean": "rm -rf dist",
-    "build": "npm run clean && ./node_modules/.bin/broccoli build dist && ./node_modules/.bin/webpack",
-    "serve": "npm run build && ./node_modules/.bin/http-server dist",
+    "clean": "rm -rf docs",
+    "build": "npm run clean && ./node_modules/.bin/broccoli build docs && ./node_modules/.bin/webpack",
+    "serve": "npm run build && ./node_modules/.bin/http-server docs",
     "prettier": "./node_modules/.bin/prettier --single-quote --trailing-comma es5 --write \"{src,tests}/**/*.js\""
   },
   "precommit": [
