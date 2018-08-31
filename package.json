@@ -4,16 +4,18 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/.bin/karma start",
     "test:watch": "./node_modules/.bin/karma start --no-single-run",
     "clean": "rm -rf docs",
     "build": "npm run clean && ./node_modules/.bin/broccoli build docs && ./node_modules/.bin/webpack",
     "serve": "npm run build && ./node_modules/.bin/http-server docs",
-    "prettier": "./node_modules/.bin/prettier --single-quote --trailing-comma es5 --write \"{src,tests}/**/*.js\""
+    "precommit:prettier": "./scripts/precommit-prettier.sh",
+    "precommit:test": "./node_modules/.bin/karma start",
+    "precommit:deploy": "./scripts/precommit-build-page.sh"
   },
   "precommit": [
-    "prettier",
-    "test"
+    "precommit:prettier",
+    "precommit:test",
+    "precommit:deploy"
   ],
   "devDependencies": {
     "babel-preset-env": "^1.7.0",

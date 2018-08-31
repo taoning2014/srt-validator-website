@@ -31,9 +31,7 @@ Currently the app is deployed to [github pages](https://pages.github.com/), unbe
 - [ ] Add missing tests.
 - [ ] Refactor UI.
 - [ ] Add more logic to UI e.g. disable button before user upload or type in the textarea.
-- [ ] Refactor prettier to only check changed files, add eslint to pre-commit.
 - [ ] User should be able to download the valid caption file by SRTParser.serialize.
-- [ ] Add deploy stript
 - [ ] Improve page loading time for the new HTML5UP template
 - [ ] MOST IMPORT :fire::fire::fire: play with UI, capture missing validation error (don't go too wild, just the regular errors, please)
 
@@ -45,5 +43,8 @@ Currently the app is deployed to [github pages](https://pages.github.com/), unbe
 - [X] Implement text editor in UI, which will parse the input file and display it in the editor. User can use it to change the caption content and valide it.
 - [X] Add style to make UI looks better.
 - [X] Add line numbers to the textarea
+- [X] Move srt validator to a separate page(default page)
+- [X] Refactor prettier to only check changed files, add eslint to pre-commit.
+- [X] Add deploy script
 
 update parser / validators to capture those errors.

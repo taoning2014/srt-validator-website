@@ -3431,7 +3431,6 @@ body.is-preload .wrapper.fade > .inner {
   display: flex;
   background-color: #5e42a6;
   cursor: default;
-  padding: 1.75em 2em;
 }
 
 #header > .title {
@@ -3985,4 +3984,16 @@ body.is-preload #sidebar nav ul li {
 
 #caption-file {
   display: none;
+}
+
+.srt-validator-page__header {
+  padding: 10px 32px;
+}
+
+.srt-validator-page__container{
+  padding: 32px
+}
+
+.try-it-now-container {
+  text-align: center;
 }
