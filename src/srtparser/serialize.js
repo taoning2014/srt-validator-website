@@ -1,19 +1,48 @@
 import { toMS } from './date';
-const CHUNK_SEPARATOR = '\n\n';
+const EOL = '\n';
 
 /**
  * Builds the file contents of an SRT given an array of SRTChunks
  * @param  {Array} srtChunks
  * @return {String}
  */
-export default function serialize(srtChunks) {
-  return srtChunks
-    .map(
-      chunk => `${chunk.sequenceNumber}
-${serializeTimeSpan(chunk.time)}
-${chunk.text}`
-    )
-    .join(CHUNK_SEPARATOR);
+export default function serialize(srtChunks, format = 'SRT') {
+  let options = {
+    FILE_HEADER: '',
+    MS_SEPERATOR: ',',
+    FORMAT_TEXT: text => text,
+    CHUNK_SEPARATOR: `${EOL}${EOL}`,
+  };
+
+  switch (format.toLowerCase()) {
+    case 'webvtt':
+      options = {
+        ...options,
+        FILE_HEADER: `WEBVTT${EOL}${EOL}`,
+        MS_SEPERATOR: '.',
+        FORMAT_TEXT: text =>
+          text
+            .split(EOL)
+            .map(line => `- ${line}`)
+            .join(EOL),
+      };
+      break;
+    case 'srt':
+      // default is already SRT format
+      break;
+    default:
+      throw new Error(`Unrecognized format: ${format}`);
+  }
+  return (
+    options.FILE_HEADER +
+    srtChunks
+      .map(
+        chunk => `${chunk.sequenceNumber}
+${serializeTimeSpan(chunk.time, options)}
+${options.FORMAT_TEXT(chunk.text)}`
+      )
+      .join(options.CHUNK_SEPARATOR)
+  );
 }
 
 /**
@@ -23,10 +52,11 @@ ${chunk.text}`
  * @param  {[type]} timeSpan [description]
  * @return {[type]}          [description]
  */
-function serializeTimeSpan(timeSpan) {
-  return `${serializeTimeStamp(timeSpan.start)} --> ${serializeTimeStamp(
-    timeSpan.end
-  )}`;
+function serializeTimeSpan(timeSpan, options) {
+  return `${serializeTimeStamp(
+    timeSpan.start,
+    options
+  )} --> ${serializeTimeStamp(timeSpan.end, options)}`;
 }
 
 /**
@@ -36,7 +66,7 @@ function serializeTimeSpan(timeSpan) {
  * @param  {Integer} timeStamp - Timestamp in microseconds
  * @return {String} - A string representation of the timestamp in SRT format
  */
-function serializeTimeStamp(timeStamp) {
+function serializeTimeStamp(timeStamp, options) {
   let remainder = timeStamp;
   const hours = timeStamp / toMS.hour;
   remainder %= toMS.hour;
@@ -56,5 +86,7 @@ function serializeTimeStamp(timeStamp) {
     // Map numbers to 0-padding + rounded strings
     .map((value, i) => `${Math.floor(value)}`.padStart(padding[i], '0'));
 
-  return `${strHours}:${strMinutes}:${strSeconds},${strMillis}`;
+  return `${strHours}:${strMinutes}:${strSeconds}${
+    options.MS_SEPERATOR
+  }${strMillis}`;
 }
