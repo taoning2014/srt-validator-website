@@ -11,12 +11,11 @@ export default class CaptionTimeSpanValidator extends BaseValidator {
 
     let previousEndTime = 0;
     this.parsedJSON
-      .map(({ time: { start, end } }) => ({ start, end }))
-      .map(({ start, end }, index) => {
+      .map(({ time: { start, end }, lineNumbers }, index) => {
         if (start >= end) {
           this._addToResult({
             message: 'start time should be less than end time',
-            lineNumber: index * 4 + 2,
+            lineNumber: lineNumbers.timeSpan + 1,
           });
         }
 
@@ -31,7 +30,7 @@ export default class CaptionTimeSpanValidator extends BaseValidator {
         if (previousEndTime > start) {
           this._addToResult({
             message: 'start time should be less than previous end time',
-            lineNumber: index * 4 + 2,
+            lineNumber: lineNumbers.timeSpan + 1,
           });
         }
 
