@@ -18,11 +18,25 @@ world`
     ),
     [
       {
+        lineNumbers: {
+          chunkEnd: 2,
+          chunkStart: 0,
+          sequenceNumber: 0,
+          text: 2,
+          timeSpan: 1,
+        },
         sequenceNumber: 1,
         time: { start: 0, end: 1 },
         text: 'hello',
       },
       {
+        lineNumbers: {
+          chunkEnd: 6,
+          chunkStart: 4,
+          sequenceNumber: 4,
+          text: 6,
+          timeSpan: 5,
+        },
         sequenceNumber: 2,
         time: { start: 1, end: 2 },
         text: 'world',
@@ -48,6 +62,13 @@ world
     ),
     [
       {
+        lineNumbers: {
+          chunkEnd: 5,
+          chunkStart: 0,
+          sequenceNumber: 0,
+          text: 2,
+          timeSpan: 1,
+        },
         sequenceNumber: 1,
         time: { start: 0, end: 1 },
         text: `hello

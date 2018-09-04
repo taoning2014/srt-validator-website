@@ -15,17 +15,22 @@ export default function parse(file) {
   const result = [];
 
   for (var i = 0; i < lines.length; i++) {
+    const lineNumbers = { chunkStart: i };
+
     // First line
+    lineNumbers.sequenceNumber = i;
     const sequenceNumber = parseSequenceNumber(lines[i], i);
 
     // Second line
     i++;
+    lineNumbers.timeSpan = i;
     const time = parseTimeSpan(lines[i], i);
 
     // Text can span multiple lines, so consume all lines
     // until the separator
 
     i++;
+    lineNumbers.text = i;
     const _linesOfText = [];
     while (lines[i] && lines[i].trim()) {
       _linesOfText.push(lines[i]);
@@ -36,7 +41,10 @@ export default function parse(file) {
       throw new ParseError(`Missing caption text`, i);
     }
 
+    lineNumbers.chunkEnd = i - 1;
+
     result.push({
+      lineNumbers,
       sequenceNumber,
       time,
       text,
