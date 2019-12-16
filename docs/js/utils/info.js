@@ -1,5 +1,3 @@
-import ParseError from 'srt-validator/srtparser/parseerror';
-
 export function cleanInfo(el) {
   while (el.lastChild) {
     el.removeChild(el.lastChild);
@@ -18,7 +16,7 @@ export function displayError(el, error) {
   const { message, lineNumber, validator } = error;
 
   let errorText;
-  if (error instanceof ParseError) {
+  if (!validator) {
     errorText = `Parse Error: ${message} on `;
   } else {
     errorText = `${validator}: ${message} on `;

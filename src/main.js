@@ -1,4 +1,4 @@
-import srtValidator from './srtValidator';
+import srtValidator from 'srt-validator';
 import { cleanInfo, displayInfo, displayError } from './utils/info';
 import CodeMirror from 'codemirror/lib/codemirror';
 import CodeMirrorCSS from 'codemirror/lib/codemirror.css';

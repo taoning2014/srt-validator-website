@@ -1,5 +1,5 @@
 {
-  "name": "srt-validator",
+  "name": "srt-validator-website",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -45,6 +45,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "codemirror": "^5.40.0"
+    "codemirror": "^5.40.0",
+    "srt-validator": "git+https://github.com/taoning2014/srt-validator.git"
   }
 }
