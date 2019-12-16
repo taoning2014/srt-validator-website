@@ -8,7 +8,10 @@ module.exports = {
   },
   resolve: {
     alias: {
-      'srt-validator': path.resolve(__dirname, 'src'),
+      'srt-validator': path.resolve(
+        __dirname,
+        'node_modules/srt-validator/src/srtValidator.js'
+      ),
       codemirror: path.resolve(__dirname, 'node_modules/codemirror/'),
     },
   },
