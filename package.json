@@ -45,7 +45,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "codemirror": "^5.40.0",
+    "codemirror": "^5.58.2",
     "srt-validator": "git+https://github.com/taoning2014/srt-validator.git"
   }
 }
